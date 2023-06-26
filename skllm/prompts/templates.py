@@ -4,7 +4,7 @@ You will be provided with the following information:
 2. List of classes the search queries can be assigned to. The list is delimited with square brackets. The classes in the list are enclosed in single quotes and comma separated.
 
 Perform the following tasks:
-1. Identify the classes the provided search queries belong to with the highest probability. Important: if the search query does not explicitly refer to a class, do not infer classification but rather return *Unknown*.
+1. Identify the classes the provided search queries belong to with the highest probability. Important: if the search query does not explicitly mention an ingredient, do not infer any ingredient but rather classify it as *Unknown*.
 2. Assign the provided search query to that class.
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned category. Do not provide any additional information except the JSON.
 
