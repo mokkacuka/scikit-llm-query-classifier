@@ -1,20 +1,3 @@
-ZERO_SHOT_CLF_PROMPT_TEMPLATE = """
-You will be provided with the following information:
-1. Search queries related to beauty. The list of search queries is delimited with triple backticks.
-2. List of classes the search queries can be assigned to. The list is delimited with square brackets. The classes in the list are enclosed in single quotes and comma separated.
-
-Perform the following tasks:
-1. Identify the classes the provided search queries belong to with the highest probability. Important: if the search query does not explicitly mention an ingredient, do not infer any ingredient but rather classify it as *Unknown*.
-2. Assign the provided search query to that class.
-3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned category. Do not provide any additional information except the JSON.
-
-List of classes: {labels}
-
-Text sample: ```{x}```
-
-Your JSON response:
-"""
-
 FEW_SHOT_CLF_PROMPT_TEMPLATE = """
 You will be provided with the following information:
 1. An arbitrary text sample. The sample is delimited with triple backticks.
