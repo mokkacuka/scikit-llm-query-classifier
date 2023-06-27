@@ -1,13 +1,14 @@
 ZERO_SHOT_CLF_PROMPT_TEMPLATE = """
+Act like a professional in the beauty industry.
+
 You will be provided with the following information:
 1. Search queries related to makeup. The list of search queries is delimited with triple backticks.
 2. List of classes the search queries can be assigned to. The list is delimited with square brackets. The classes in the list are enclosed in single quotes and comma separated.
 
 Perform the following tasks:
-1. Act like a professional makeup artist.
-2. Identify the classes the provided search queries belong to with the highest probability (important: if the search query does not explicitly mention an ingredient, DO NOT infer any ingredient but rather classify it as "Unknown").
-3. Assign the provided search query to that class.
-4. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned category. Do not provide any additional information except the JSON.
+1. Identify the classes the provided search queries belong to with the highest probability. Important: if the search query does not explicitly mention an ingredient, DO NOT infer any ingredient but rather classify it as "Unknown".
+2. Assign the provided search query to that class.
+3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned category. Do not provide any additional information except the JSON.
 
 List of classes: {labels}
 
