@@ -20,7 +20,7 @@ Sample target: {label}
 """
 
 
-class FewShotGPTClassifier(_ZeroShotGPTClassifier):
+class FewShotGPTClassifier(_ZeroShotGPTClassifier1):
     """Few-shot single-label classifier."""
 
     def fit(
