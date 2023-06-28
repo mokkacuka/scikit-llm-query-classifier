@@ -1,12 +1,67 @@
-ZERO_SHOT_CLF_PROMPT_TEMPLATE = """
+ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM1 = """
+Act like a professional in the makeup industry.
 You will be provided with the following information:
-1. Search queries related to beauty. The list of search queries is delimited with triple backticks.
-2. List of classes the search queries can be assigned to. The list is delimited with square brackets. The classes in the list are enclosed in single quotes and comma separated.
+1. Search queries related to makeup. The list of search queries is delimited with triple backticks.
+2. List of makeup concerns the search queries can be assigned to. The list is delimited with square brackets. The makeup concerns in the list are enclosed in single quotes and comma separated.
 
 Perform the following tasks:
-1. Identify the classes the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the search query as *Unknown*.
-2. Assign the provided search query to that class.
-3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned category. Do not provide any additional information except the JSON.
+1. Identify the makeup concern the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup concern as *Unknown*.
+2. Assign the provided search query to that concern.
+3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
+
+List of classes: {labels}
+
+Text sample: ```{x}```
+
+Your JSON response:
+"""
+
+ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM2 = """
+Act like a professional in the makeup industry.
+You will be provided with the following information:
+1. Search queries related to makeup. The list of search queries is delimited with triple backticks.
+2. List of makeup ingredients or features the search queries can be assigned to. The list is delimited with square brackets. The ingredients and features in the list are enclosed in single quotes and comma separated.
+
+Perform the following tasks:
+1. Identify the makeup ingredient or feature the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup ingredient or feature as *Unknown*.
+2. Assign the provided search query to that ingredient or feature.
+3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
+
+List of classes: {labels}
+
+Text sample: ```{x}```
+
+Your JSON response:
+"""
+
+ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM3 = """
+Act like a professional in the makeup industry.
+You will be provided with the following information:
+1. Search queries related to makeup. The list of search queries is delimited with triple backticks.
+2. List of makeup products the search queries can be assigned to. The list is delimited with square brackets. The products in the list are enclosed in single quotes and comma separated.
+
+Perform the following tasks:
+1. Identify the makeup product the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup product as *Unknown*.
+2. Assign the provided search query to that product.
+3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
+
+List of classes: {labels}
+
+Text sample: ```{x}```
+
+Your JSON response:
+"""
+
+ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM4 = """
+Act like a professional in the makeup industry.
+You will be provided with the following information:
+1. Search queries related to makeup. The list of search queries is delimited with triple backticks.
+2. List of makeup advice or inspirations the search queries can be assigned to. The list is delimited with square brackets. The advice or inspirations in the list are enclosed in single quotes and comma separated.
+
+Perform the following tasks:
+1. Identify the makeup advice or inspiration the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup advice or inspiration as *Unknown*.
+2. Assign the provided search query to that advice or inspiration.
+3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 
 List of classes: {labels}
 
