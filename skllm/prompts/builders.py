@@ -5,17 +5,20 @@ from skllm.prompts.templates import (
     FOCUSED_SUMMARY_PROMPT_TEMPLATE,
     SUMMARY_PROMPT_TEMPLATE,
     TRANSLATION_PROMPT_TEMPLATE,
-    ZERO_SHOT_CLF_PROMPT_TEMPLATE,
+    ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM1,
+    ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM2,
+    ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM3,
+    ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM4,
     ZERO_SHOT_MLCLF_PROMPT_TEMPLATE,
 )
 
 # TODO add validators
 
 
-def build_zero_shot_prompt_slc(
-    x: str, labels: str, template: str = ZERO_SHOT_CLF_PROMPT_TEMPLATE
+def build_zero_shot_prompt_slc_mu_dim1(
+    x: str, labels: str, template: str = ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM1
 ) -> str:
-    """Builds a prompt for zero-shot single-label classification.
+    """Builds a prompt for zero-shot single-label classification (MU Dimension 1).
 
     Parameters
     ----------
@@ -24,7 +27,7 @@ def build_zero_shot_prompt_slc(
     labels : str
         candidate labels in a list-like representation
     template : str
-        prompt template to use, must contain placeholders for all variables, by default ZERO_SHOT_CLF_PROMPT_TEMPLATE
+        prompt template to use, must contain placeholders for all variables, by default ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM1
 
     Returns
     -------
@@ -33,6 +36,68 @@ def build_zero_shot_prompt_slc(
     """
     return template.format(x=x, labels=labels)
 
+def build_zero_shot_prompt_slc_mu_dim2(
+    x: str, labels: str, template: str = ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM2
+) -> str:
+    """Builds a prompt for zero-shot single-label classification (MU Dimension 2).
+
+    Parameters
+    ----------
+    x : str
+        sample to classify
+    labels : str
+        candidate labels in a list-like representation
+    template : str
+        prompt template to use, must contain placeholders for all variables, by default ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM2
+
+    Returns
+    -------
+    str
+        prepared prompt
+    """
+    return template.format(x=x, labels=labels)
+
+def build_zero_shot_prompt_slc_mu_dim3(
+    x: str, labels: str, template: str = ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM3
+) -> str:
+    """Builds a prompt for zero-shot single-label classification (MU Dimension 3).
+
+    Parameters
+    ----------
+    x : str
+        sample to classify
+    labels : str
+        candidate labels in a list-like representation
+    template : str
+        prompt template to use, must contain placeholders for all variables, by default ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM3
+
+    Returns
+    -------
+    str
+        prepared prompt
+    """
+    return template.format(x=x, labels=labels)
+
+def build_zero_shot_prompt_slc_mu_dim4(
+    x: str, labels: str, template: str = ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM4
+) -> str:
+    """Builds a prompt for zero-shot single-label classification (MU Dimension 4).
+
+    Parameters
+    ----------
+    x : str
+        sample to classify
+    labels : str
+        candidate labels in a list-like representation
+    template : str
+        prompt template to use, must contain placeholders for all variables, by default ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM4
+
+    Returns
+    -------
+    str
+        prepared prompt
+    """
+    return template.format(x=x, labels=labels)
 
 def build_few_shot_prompt_slc(
     x: str,
