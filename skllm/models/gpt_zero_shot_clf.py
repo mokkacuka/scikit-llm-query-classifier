@@ -13,7 +13,10 @@ from skllm.openai.chatgpt import construct_message, extract_json_key
 from skllm.openai.mixin import OpenAIMixin as _OAIMixin
 from skllm.prompts.builders import (
     build_zero_shot_prompt_mlc,
-    build_zero_shot_prompt_slc,
+    build_zero_shot_prompt_slc_mu_dim1,
+    build_zero_shot_prompt_slc_mu_dim2,
+    build_zero_shot_prompt_slc_mu_dim3,
+    build_zero_shot_prompt_slc_mu_dim4,
 )
 from skllm.utils import to_numpy as _to_numpy
 
