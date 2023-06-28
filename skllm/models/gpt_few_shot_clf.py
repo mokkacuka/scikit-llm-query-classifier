@@ -4,7 +4,10 @@ import numpy as np
 import pandas as pd
 
 from skllm.models.gpt_zero_shot_clf import (
-    ZeroShotGPTClassifier as _ZeroShotGPTClassifier,
+    ZeroShotGPTClassifierDimension1 as _ZeroShotGPTClassifierDimension1,
+    ZeroShotGPTClassifierDimension1 as _ZeroShotGPTClassifierDimension2,
+    ZeroShotGPTClassifierDimension1 as _ZeroShotGPTClassifierDimension3,
+    ZeroShotGPTClassifierDimension1 as _ZeroShotGPTClassifierDimension4,
 )
 from skllm.prompts.builders import build_few_shot_prompt_slc
 from skllm.utils import to_numpy as _to_numpy
