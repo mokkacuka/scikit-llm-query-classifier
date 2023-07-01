@@ -5,8 +5,8 @@ You will be provided with the following information:
 2. List of makeup concerns the search queries can be assigned to. The list is delimited with square brackets. The makeup concerns in the list are enclosed in single quotes and comma separated.
 
 Perform the following tasks:
-1. Identify the makeup concern the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup concern as *Unknown*.
-2. Assign the provided search query to that concern.
+1. Identify the makeup need the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup need as *Unknown*.
+2. Assign the provided search query to that concern (e.g. "lip gloss": Unknown).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 
 List of classes: {labels}
@@ -24,7 +24,7 @@ You will be provided with the following information:
 
 Perform the following tasks:
 1. Identify the makeup ingredient or feature the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup ingredient or feature as *Unknown*.
-2. Assign the provided search query to that ingredient or feature.
+2. Assign the provided search query to that ingredient or feature (e.g. "cream with hyaluronic acid": Hyaluronic Acid).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 
 List of classes: {labels}
@@ -42,7 +42,7 @@ You will be provided with the following information:
 
 Perform the following tasks:
 1. Identify the makeup product the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup product as *Unknown*.
-2. Assign the provided search query to that product.
+2. Assign the provided search query to that product (e.g. "plumper lips": Unknown).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 
 List of classes: {labels}
@@ -60,7 +60,7 @@ You will be provided with the following information:
 
 Perform the following tasks:
 1. Identify the makeup advice or inspiration the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the makeup advice or inspiration as *Unknown*.
-2. Assign the provided search query to that advice or inspiration.
+2. Assign the provided search query to that advice or inspiration (e.g. "blush": Unknown).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 
 List of classes: {labels}
