@@ -9,9 +9,32 @@ from skllm.prompts.templates import (
     ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM2,
     ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM3,
     ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM4,
+    ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_CATEGORY,
 )
 
 # TODO add validators
+
+def build_zero_shot_prompt_slc_sc_category(
+    x: str, labels: str, template: str = ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_CATEGORY
+) -> str:
+    """Builds a prompt for zero-shot single-label classification (SC Dimension 1).
+
+    Parameters
+    ----------
+    x : str
+        sample to classify
+    labels : str
+        candidate labels in a list-like representation
+    template : str
+        prompt template to use, must contain placeholders for all variables, by default ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM1
+
+    Returns
+    -------
+    str
+        prepared prompt
+    """
+    return template.format(x=x, labels=labels)
+
 
 def build_zero_shot_prompt_slc_sc_dim1(
     x: str, labels: str, template: str = ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM1
