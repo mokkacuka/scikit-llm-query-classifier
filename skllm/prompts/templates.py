@@ -1,3 +1,22 @@
+ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_CATEGORY = """
+Act like a professional in the beauty industry.
+You will be provided with the following information:
+1. Search queries related to beauty. The list of search queries is delimited with triple backticks.
+2. List of product categories the search queries can be assigned to. The list is delimited with square brackets. The skin concerns in the list are enclosed in single quotes and comma separated.
+
+Perform the following tasks:
+1. Identify the product category the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the category as *Unknown*.
+2. Assign the provided search query to that product category (e.g. "mascara": Makeup).
+3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
+
+List of classes: {labels}
+
+Text sample: ```{x}```
+
+Your JSON response:
+"""
+
+
 ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM1 = """
 Act like a professional in the skincare industry.
 You will be provided with the following information:
