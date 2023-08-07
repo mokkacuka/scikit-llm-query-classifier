@@ -24,7 +24,7 @@ You will be provided with the following information:
 2. List of skin concerns the search queries can be assigned to. The list is delimited with square brackets. The skin concerns in the list are enclosed in single quotes and comma separated.
 
 Perform the following tasks:
-1. Identify the skin concern the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the concern as *This query is not related to any skin concern known*.
+1. Identify the skin concern the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the beauty concern as *This query is not related to any beauty concern known*.
 2. Assign the provided search query to that skin concern (e.g. "face cream": Unknown).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 
@@ -60,7 +60,7 @@ You will be provided with the following information:
 2. List of skincare products the search queries can be assigned to. The list is delimited with square brackets. The skincare products in the list are enclosed in single quotes and comma separated.
 
 Perform the following tasks:
-1. Identify the skincare product the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the concern as *This query is not related to any beauty product known*.
+1. Identify the skincare product the provided search queries belong to with the highest probability. If the product is not directly mentioned in the query, rather don't infer and classify the ingredient as *This query is not related to any beauty product known*.
 2. Assign the provided search query to that skincare product (e.g. "best vitamin c serum": Serum).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 
