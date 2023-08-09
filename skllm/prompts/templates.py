@@ -93,10 +93,10 @@ ZERO_SHOT_CLF_PROMPT_TEMPLATE_MU_DIM1 = """
 Act like a professional in the makeup industry.
 You will be provided with the following information:
 1. Search queries related to makeup. The list of search queries is delimited with triple backticks.
-2. List of makeup features or beauty concerns the search queries can be assigned to. The list is delimited with square brackets. The makeup concerns in the list are enclosed in single quotes and comma separated.
+2. List of beauty concerns the search queries can be assigned to. The list is delimited with square brackets. The makeup concerns in the list are enclosed in single quotes and comma separated.
 
 Perform the following tasks:
-1. Identify the beauty concern the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the beauty concern as *This query is not related to any beauty concern known*.
+1. Identify the beauty concern the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the beauty concern as *This query is not related to any beauty concern*.
 2. Assign the provided search query to that concern (e.g. "lip gloss": Unknown).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 
