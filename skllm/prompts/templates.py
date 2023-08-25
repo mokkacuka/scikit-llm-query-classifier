@@ -1,4 +1,4 @@
-ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_CATEGORY = """
+ZERO_SHOT_CLF_PROMPT_TEMPLATE_CATEGORY = """
 Act like a professional in the beauty industry.
 You will be provided with the following information:
 1. Search queries related to beauty. The list of search queries is delimited with triple backticks.
