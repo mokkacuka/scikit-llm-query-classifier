@@ -20,7 +20,7 @@ from skllm.prompts.builders import (
     build_zero_shot_prompt_slc_sc_dim2,
     build_zero_shot_prompt_slc_sc_dim3,
     build_zero_shot_prompt_slc_sc_dim4,
-    build_zero_shot_prompt_slc_sc_category,
+    build_zero_shot_prompt_slc_category,
 )
 from skllm.utils import to_numpy as _to_numpy
 
@@ -143,7 +143,7 @@ class _BaseZeroShotGPTClassifier(ABC, BaseEstimator, ClassifierMixin, _OAIMixin)
         )
         return completion
 
-class ZeroShotGPTClassifierScCategory(_BaseZeroShotGPTClassifier):
+class ZeroShotGPTClassifierCategory(_BaseZeroShotGPTClassifier):
     """Zero-shot classifier for multiclass classification.
 
     Parameters
