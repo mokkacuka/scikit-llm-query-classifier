@@ -189,7 +189,7 @@ class ZeroShotGPTClassifierCategory(_BaseZeroShotGPTClassifier):
         return labels
 
     def _get_prompt(self, x) -> str:
-        return build_zero_shot_prompt_slc_sc_category(x, repr(self.classes_))
+        return build_zero_shot_prompt_slc_category(x, repr(self.classes_))
 
     def _get_default_label(self):
         """ Returns the default label based on the default_label argument. """
