@@ -12,6 +12,7 @@ from skllm.completions import get_chat_completion
 from skllm.openai.chatgpt import construct_message, extract_json_key
 from skllm.openai.mixin import OpenAIMixin as _OAIMixin
 from skllm.prompts.builders import (
+    build_zero_shot_prompt_slc_category,
     build_zero_shot_prompt_slc_mu_dim1,
     build_zero_shot_prompt_slc_mu_dim2,
     build_zero_shot_prompt_slc_mu_dim3,
@@ -20,7 +21,6 @@ from skllm.prompts.builders import (
     build_zero_shot_prompt_slc_sc_dim2,
     build_zero_shot_prompt_slc_sc_dim3,
     build_zero_shot_prompt_slc_sc_dim4,
-    build_zero_shot_prompt_slc_category,
 )
 from skllm.utils import to_numpy as _to_numpy
 
