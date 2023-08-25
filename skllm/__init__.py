@@ -8,5 +8,5 @@ from skllm.models.gpt_zero_shot_clf import (
     ZeroShotGPTClassifierScDimension2,
     ZeroShotGPTClassifierScDimension3,
     ZeroShotGPTClassifierScDimension4,
-    ZeroShotGPTClassifierScCategory
+    ZeroShotGPTClassifierScCategory,
 )
