@@ -1,6 +1,6 @@
 # ordering is important here to prevent circular imports
 from skllm.models.gpt_zero_shot_clf import (
-    ZeroShotGPTClassifierScCategory,
+    ZeroShotGPTClassifierCategory,
     ZeroShotGPTClassifierMuDimension1,
     ZeroShotGPTClassifierMuDimension2,
     ZeroShotGPTClassifierMuDimension3,
