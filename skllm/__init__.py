@@ -9,4 +9,8 @@ from skllm.models.gpt_zero_shot_clf import (
     ZeroShotGPTClassifierScDimension2,
     ZeroShotGPTClassifierScDimension3,
     ZeroShotGPTClassifierScDimension4,
+    ZeroShotGPTClassifierHaDimension1,
+    ZeroShotGPTClassifierHaDimension2,
+    ZeroShotGPTClassifierHaDimension3,
+    ZeroShotGPTClassifierHaDimension4,
 )
