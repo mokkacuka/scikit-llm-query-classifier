@@ -5,7 +5,7 @@ You will be provided with the following information:
 """
 
 common_part2 = """Perform the following tasks:
-1. Identify the {item} the provided search queries belong to with the highest probability. If the classification is not obvious, rather classify the {item} as {classification}.
+1. Identify the {item} the provided search queries belong to with the highest probability. If the classification is not obvious (e.g. if the ingredient is not mentioned in the query), rather classify the {item} as {classification}.
 2. Assign the provided search query to that {item} (e.g. "{example}": {example_value}).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 List of classes: {{labels}}
