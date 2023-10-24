@@ -21,6 +21,10 @@ from skllm.prompts.builders import (
     build_zero_shot_prompt_slc_sc_dim2,
     build_zero_shot_prompt_slc_sc_dim3,
     build_zero_shot_prompt_slc_sc_dim4,
+    build_zero_shot_prompt_slc_ha_dim1,
+    build_zero_shot_prompt_slc_ha_dim2,
+    build_zero_shot_prompt_slc_ha_dim3,
+    build_zero_shot_prompt_slc_ha_dim4,
 )
 from skllm.utils import to_numpy as _to_numpy
 
@@ -909,6 +913,347 @@ class ZeroShotGPTClassifierMuDimension4(_BaseZeroShotGPTClassifier):
     ):
         y = self._to_np(y)
         return super().fit(X, y)
+
+class ZeroShotGPTClassifierHaDimension1(_BaseZeroShotGPTClassifier):
+    """Zero-shot classifier for multiclass classification.
+
+    Parameters
+    ----------
+    openai_key : Optional[str] , default : None
+        Your OpenAI API key. If None, the key will be read from the SKLLM_CONFIG_OPENAI_KEY environment variable.
+    openai_org : Optional[str] , default : None
+        Your OpenAI organization. If None, the organization will be read from the SKLLM_CONFIG_OPENAI_ORG
+         environment variable.
+    openai_model : str , default : "gpt-3.5-turbo"
+        The OpenAI model to use. See https://beta.openai.com/docs/api-reference/available-models for a list of
+        available models.
+    default_label : Optional[str] , default : 'Random'
+        The default label to use if the LLM could not generate a response for a sample. If set to 'Random' a random
+        label will be chosen based on probabilities from the training set.
+    """
+
+    def __init__(
+        self,
+        openai_key: Optional[str] = None,
+        openai_org: Optional[str] = None,
+        openai_model: str = "gpt-3.5-turbo",
+        default_label: Optional[str] = 'Random',
+    ):
+        super().__init__(openai_key, openai_org, openai_model, default_label)
+
+    def _extract_labels(self, y: Any) -> List[str]:
+        """
+        Return the class labels as a list.
+
+        Parameters
+        ----------
+        y : Any
+        
+        Returns
+        -------
+        List[str]
+        """
+        if isinstance(y, (pd.Series, np.ndarray)):
+            labels = y.tolist()
+        else:
+            labels = y
+        return labels
+
+    def _get_prompt(self, x) -> str:
+        return build_zero_shot_prompt_slc_mu_dim4(x, repr(self.classes_))
+
+    def _get_default_label(self):
+        """ Returns the default label based on the default_label argument. """
+        if self.default_label == "Random":
+            return random.choices(self.classes_, self.probabilities_)[0]
+        else:
+            return self.default_label
+
+    def _predict_single(self, x):
+        """
+        Predicts the labels for a single sample.
+        """
+        completion = self._get_chat_completion(x)
+        try:
+            label = str(
+                extract_json_key(
+                    completion["choices"][0]["message"]["content"], "label"
+                )
+            )
+        except Exception as e:
+            print(completion)
+            print(f"Could not extract the label from the completion: {str(e)}")
+            label = ""
+
+        if label not in self.classes_:
+            label = label.replace("'", "").replace('"', "")
+            if label not in self.classes_:  # try again
+                label = self._get_default_label()
+        return label
+
+    def fit(
+        self,
+        X: Optional[Union[np.ndarray, pd.Series, List[str]]],
+        y: Union[np.ndarray, pd.Series, List[str]],
+    ):
+        y = self._to_np(y)
+        return super().fit(X, y)
+
+class ZeroShotGPTClassifierHaDimension2(_BaseZeroShotGPTClassifier):
+    """Zero-shot classifier for multiclass classification.
+
+    Parameters
+    ----------
+    openai_key : Optional[str] , default : None
+        Your OpenAI API key. If None, the key will be read from the SKLLM_CONFIG_OPENAI_KEY environment variable.
+    openai_org : Optional[str] , default : None
+        Your OpenAI organization. If None, the organization will be read from the SKLLM_CONFIG_OPENAI_ORG
+         environment variable.
+    openai_model : str , default : "gpt-3.5-turbo"
+        The OpenAI model to use. See https://beta.openai.com/docs/api-reference/available-models for a list of
+        available models.
+    default_label : Optional[str] , default : 'Random'
+        The default label to use if the LLM could not generate a response for a sample. If set to 'Random' a random
+        label will be chosen based on probabilities from the training set.
+    """
+
+    def __init__(
+        self,
+        openai_key: Optional[str] = None,
+        openai_org: Optional[str] = None,
+        openai_model: str = "gpt-3.5-turbo",
+        default_label: Optional[str] = 'Random',
+    ):
+        super().__init__(openai_key, openai_org, openai_model, default_label)
+
+    def _extract_labels(self, y: Any) -> List[str]:
+        """
+        Return the class labels as a list.
+
+        Parameters
+        ----------
+        y : Any
+        
+        Returns
+        -------
+        List[str]
+        """
+        if isinstance(y, (pd.Series, np.ndarray)):
+            labels = y.tolist()
+        else:
+            labels = y
+        return labels
+
+    def _get_prompt(self, x) -> str:
+        return build_zero_shot_prompt_slc_mu_dim4(x, repr(self.classes_))
+
+    def _get_default_label(self):
+        """ Returns the default label based on the default_label argument. """
+        if self.default_label == "Random":
+            return random.choices(self.classes_, self.probabilities_)[0]
+        else:
+            return self.default_label
+
+    def _predict_single(self, x):
+        """
+        Predicts the labels for a single sample.
+        """
+        completion = self._get_chat_completion(x)
+        try:
+            label = str(
+                extract_json_key(
+                    completion["choices"][0]["message"]["content"], "label"
+                )
+            )
+        except Exception as e:
+            print(completion)
+            print(f"Could not extract the label from the completion: {str(e)}")
+            label = ""
+
+        if label not in self.classes_:
+            label = label.replace("'", "").replace('"', "")
+            if label not in self.classes_:  # try again
+                label = self._get_default_label()
+        return label
+
+    def fit(
+        self,
+        X: Optional[Union[np.ndarray, pd.Series, List[str]]],
+        y: Union[np.ndarray, pd.Series, List[str]],
+    ):
+        y = self._to_np(y)
+        return super().fit(X, y)
+
+class ZeroShotGPTClassifierHaDimension3(_BaseZeroShotGPTClassifier):
+    """Zero-shot classifier for multiclass classification.
+
+    Parameters
+    ----------
+    openai_key : Optional[str] , default : None
+        Your OpenAI API key. If None, the key will be read from the SKLLM_CONFIG_OPENAI_KEY environment variable.
+    openai_org : Optional[str] , default : None
+        Your OpenAI organization. If None, the organization will be read from the SKLLM_CONFIG_OPENAI_ORG
+         environment variable.
+    openai_model : str , default : "gpt-3.5-turbo"
+        The OpenAI model to use. See https://beta.openai.com/docs/api-reference/available-models for a list of
+        available models.
+    default_label : Optional[str] , default : 'Random'
+        The default label to use if the LLM could not generate a response for a sample. If set to 'Random' a random
+        label will be chosen based on probabilities from the training set.
+    """
+
+    def __init__(
+        self,
+        openai_key: Optional[str] = None,
+        openai_org: Optional[str] = None,
+        openai_model: str = "gpt-3.5-turbo",
+        default_label: Optional[str] = 'Random',
+    ):
+        super().__init__(openai_key, openai_org, openai_model, default_label)
+
+    def _extract_labels(self, y: Any) -> List[str]:
+        """
+        Return the class labels as a list.
+
+        Parameters
+        ----------
+        y : Any
+        
+        Returns
+        -------
+        List[str]
+        """
+        if isinstance(y, (pd.Series, np.ndarray)):
+            labels = y.tolist()
+        else:
+            labels = y
+        return labels
+
+    def _get_prompt(self, x) -> str:
+        return build_zero_shot_prompt_slc_mu_dim4(x, repr(self.classes_))
+
+    def _get_default_label(self):
+        """ Returns the default label based on the default_label argument. """
+        if self.default_label == "Random":
+            return random.choices(self.classes_, self.probabilities_)[0]
+        else:
+            return self.default_label
+
+    def _predict_single(self, x):
+        """
+        Predicts the labels for a single sample.
+        """
+        completion = self._get_chat_completion(x)
+        try:
+            label = str(
+                extract_json_key(
+                    completion["choices"][0]["message"]["content"], "label"
+                )
+            )
+        except Exception as e:
+            print(completion)
+            print(f"Could not extract the label from the completion: {str(e)}")
+            label = ""
+
+        if label not in self.classes_:
+            label = label.replace("'", "").replace('"', "")
+            if label not in self.classes_:  # try again
+                label = self._get_default_label()
+        return label
+
+    def fit(
+        self,
+        X: Optional[Union[np.ndarray, pd.Series, List[str]]],
+        y: Union[np.ndarray, pd.Series, List[str]],
+    ):
+        y = self._to_np(y)
+        return super().fit(X, y)
+
+class ZeroShotGPTClassifierHaDimension4(_BaseZeroShotGPTClassifier):
+    """Zero-shot classifier for multiclass classification.
+
+    Parameters
+    ----------
+    openai_key : Optional[str] , default : None
+        Your OpenAI API key. If None, the key will be read from the SKLLM_CONFIG_OPENAI_KEY environment variable.
+    openai_org : Optional[str] , default : None
+        Your OpenAI organization. If None, the organization will be read from the SKLLM_CONFIG_OPENAI_ORG
+         environment variable.
+    openai_model : str , default : "gpt-3.5-turbo"
+        The OpenAI model to use. See https://beta.openai.com/docs/api-reference/available-models for a list of
+        available models.
+    default_label : Optional[str] , default : 'Random'
+        The default label to use if the LLM could not generate a response for a sample. If set to 'Random' a random
+        label will be chosen based on probabilities from the training set.
+    """
+
+    def __init__(
+        self,
+        openai_key: Optional[str] = None,
+        openai_org: Optional[str] = None,
+        openai_model: str = "gpt-3.5-turbo",
+        default_label: Optional[str] = 'Random',
+    ):
+        super().__init__(openai_key, openai_org, openai_model, default_label)
+
+    def _extract_labels(self, y: Any) -> List[str]:
+        """
+        Return the class labels as a list.
+
+        Parameters
+        ----------
+        y : Any
+        
+        Returns
+        -------
+        List[str]
+        """
+        if isinstance(y, (pd.Series, np.ndarray)):
+            labels = y.tolist()
+        else:
+            labels = y
+        return labels
+
+    def _get_prompt(self, x) -> str:
+        return build_zero_shot_prompt_slc_mu_dim4(x, repr(self.classes_))
+
+    def _get_default_label(self):
+        """ Returns the default label based on the default_label argument. """
+        if self.default_label == "Random":
+            return random.choices(self.classes_, self.probabilities_)[0]
+        else:
+            return self.default_label
+
+    def _predict_single(self, x):
+        """
+        Predicts the labels for a single sample.
+        """
+        completion = self._get_chat_completion(x)
+        try:
+            label = str(
+                extract_json_key(
+                    completion["choices"][0]["message"]["content"], "label"
+                )
+            )
+        except Exception as e:
+            print(completion)
+            print(f"Could not extract the label from the completion: {str(e)}")
+            label = ""
+
+        if label not in self.classes_:
+            label = label.replace("'", "").replace('"', "")
+            if label not in self.classes_:  # try again
+                label = self._get_default_label()
+        return label
+
+    def fit(
+        self,
+        X: Optional[Union[np.ndarray, pd.Series, List[str]]],
+        y: Union[np.ndarray, pd.Series, List[str]],
+    ):
+        y = self._to_np(y)
+        return super().fit(X, y)
+
 
 class MultiLabelZeroShotGPTClassifier(_BaseZeroShotGPTClassifier):
     """Zero-shot classifier for multilabel classification.
