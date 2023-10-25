@@ -5,12 +5,15 @@ You will be provided with the following information:
 """
 
 common_part2 = """Perform the following tasks:
-1. Identify the {item} the provided search queries belong to with the highest probability. If the classification is not obvious (e.g. if the ingredient is not mentioned in the query), rather classify the {item} as {classification}.
+1. Identify the {item} the provided search queries belong to with the highest probability.
 2. Assign the provided search query to that {item} (e.g. "{example}": {example_value}).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 List of classes: {{labels}}
 Text sample: ```{{x}}```
 Your JSON response:
+"""
+fine_tuning_sc-ingredients = """
+If the skincare ingredient or feature is explicitely mentioned in the query, do not infer a specific label and rather classify the {item} as {classification}.
 """
 
 # Category dimension
@@ -18,7 +21,7 @@ ZERO_SHOT_CLF_PROMPT_TEMPLATE_CATEGORY = common_part1.format(industry_or_categor
 
 # Skincare dimensions
 ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM1 = common_part1.format(industry_or_category="skincare", items="skin concerns") + common_part2.format(item="skin concern", classification="*This query is not related to any skin concern known*", example="face cream", example_value="This query is not related to any skin concern known")
-ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM2 = common_part1.format(industry_or_category="skincare", items="skincare ingredients or features") + common_part2.format(item="skincare ingredient or feature", classification="*This query is not related to any skincare ingredient or feature known*", example="best vitamin c serum", example_value="Vitamin C")
+ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM2 = common_part1.format(industry_or_category="skincare", items="skincare ingredients or features") + fine_tuning_sc-ingredients.format(item="skincare ingredient or feature", classification="*This query is not related to any skincare ingredient or feature known*") + common_part2.format(item="skincare ingredient or feature", classification="*This query is not related to any skincare ingredient or feature known*", example="best vitamin c serum", example_value="Vitamin C")
 ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM3 = common_part1.format(industry_or_category="skincare", items="skincare products") + common_part2.format(item="skincare product", classification="*This query is not related to any skincare product known*", example="best vitamin c serum", example_value="Serum")
 ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM4 = common_part1.format(industry_or_category="skincare", items="skincare advices") + common_part2.format(item="skincare advice", classification="*This query is not related to any skincare advice*", example="best vitamin c serum", example_value="Best")
 
