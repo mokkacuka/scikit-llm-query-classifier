@@ -12,8 +12,7 @@ List of classes: {{labels}}
 Text sample: ```{{x}}```
 Your JSON response:
 """
-fine_tuning_sc-ingredients = """
-If the skincare ingredient or feature is explicitely mentioned in the query, do not infer a specific label and rather classify the {item} as {classification}.
+fine_tuning_sc_ingredients = """If the skincare ingredient or feature is explicitely mentioned in the query, do not infer a specific label and rather classify the {item} as {classification}.
 """
 
 # Category dimension
@@ -21,7 +20,7 @@ ZERO_SHOT_CLF_PROMPT_TEMPLATE_CATEGORY = common_part1.format(industry_or_categor
 
 # Skincare dimensions
 ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM1 = common_part1.format(industry_or_category="skincare", items="skin concerns") + common_part2.format(item="skin concern", classification="*This query is not related to any skin concern known*", example="face cream", example_value="This query is not related to any skin concern known")
-ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM2 = common_part1.format(industry_or_category="skincare", items="skincare ingredients or features") + fine_tuning_sc-ingredients.format(item="skincare ingredient or feature", classification="*This query is not related to any skincare ingredient or feature known*") + common_part2.format(item="skincare ingredient or feature", classification="*This query is not related to any skincare ingredient or feature known*", example="best vitamin c serum", example_value="Vitamin C")
+ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM2 = common_part1.format(industry_or_category="skincare", items="skincare ingredients or features") + fine_tuning_sc_ingredients.format(item="skincare ingredient or feature", classification="*This query is not related to any skincare ingredient or feature known*") + common_part2.format(item="skincare ingredient or feature", classification="*This query is not related to any skincare ingredient or feature known*", example="best vitamin c serum", example_value="Vitamin C")
 ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM3 = common_part1.format(industry_or_category="skincare", items="skincare products") + common_part2.format(item="skincare product", classification="*This query is not related to any skincare product known*", example="best vitamin c serum", example_value="Serum")
 ZERO_SHOT_CLF_PROMPT_TEMPLATE_SC_DIM4 = common_part1.format(industry_or_category="skincare", items="skincare advices") + common_part2.format(item="skincare advice", classification="*This query is not related to any skincare advice*", example="best vitamin c serum", example_value="Best")
 
