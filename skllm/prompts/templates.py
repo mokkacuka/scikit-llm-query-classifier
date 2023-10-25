@@ -12,6 +12,7 @@ List of classes: {{labels}}
 Text sample: ```{{x}}```
 Your JSON response:
 """
+
 fine_tuning_sc_ingredients = """If the skincare ingredient or feature is explicitely mentioned in the query, do not infer a specific label and rather classify the {item} as {classification}.
 """
 
