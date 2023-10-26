@@ -10,7 +10,7 @@ common_part2 = """Perform the following tasks:
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
 """
 
-fine_tuning_sc_ = """If the skincare {item} is not obvious or explicitely mentioned in the query, act conservatively, do not infer a specific label and rather classify the {item} as {classification}.
+fine_tuning_sc = """If the skincare {item} is not obvious or explicitely mentioned in the query, act conservatively, do not infer a specific label and rather classify the {item} as {classification}.
 List of classes: {{labels}}
 Text sample: ```{{x}}```
 Your JSON response:
