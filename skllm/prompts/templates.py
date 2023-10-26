@@ -8,12 +8,12 @@ common_part2 = """Perform the following tasks:
 1. Identify the {item} the provided search queries belong to with the highest probability.
 2. Assign the provided search query to that {item} (e.g. "{example}": {example_value}).
 3. Provide your response in a JSON format containing a single key `label` and a value corresponding to the assigned concern. Do not provide any additional information except the JSON.
-List of classes: {{labels}}
-Text sample: ```{{x}}```
-Your JSON response:
 """
 
 fine_tuning_sc_ingredients = """If the skincare ingredient or feature is explicitely mentioned in the query, do not infer a specific label and rather classify the {item} as {classification}.
+List of classes: {{labels}}
+Text sample: ```{{x}}```
+Your JSON response:
 """
 
 # Category dimension
